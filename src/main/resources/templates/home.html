@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这里是Home</title>
+</head>
+<body>
+这里是Home
+<hr>
+#*
+这里是块注释
+*#
+<hr>
+读取出：$!{value1} ##这里是行注释
+<hr>
+读取出：$!{value2},这里'!'表示如果不存在强制为空
+<hr>
+读取出：${value2},这里去掉了'!'
+<hr>
+#foreach($color in $colors) ##没有歧义时可以不加{}
+This is Color: $foreach.index , $color , $foreach.count<br>
+#end
+<hr>
+#foreach($key in $map.keySet())
+Number:$key , Value:$map.get($key)<br>
+#end
+<hr>
+#foreach($kv in $map.entrySet())
+Number:$kv.key , Value:$kv.value<br>
+#end
+<hr>
+User名字:$user.name , 描述:$user.description
+<hr>
+#set($title="自己设置的变量")
+Title: $title
+<hr>
+Parse:#parse("header.html")
+Include:#include("header.html")
+<hr>
+定义宏:
+#macro(render_color,$index,$color)
+Color Render Macro $index,$color
+#end
+<hr>
+使用宏:
+#foreach($color in $colors)
+render_color($foreach.index,$color)<br>
+#end
+</body>
+</html>
